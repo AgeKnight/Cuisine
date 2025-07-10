@@ -1,9 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ui:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ui="UnityEngine.UIElements"
-    xmlns:uie="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
->
-    
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/SelectionUI.uss?fileID=7433441132597879392&amp;guid=a963f2f989186174797905854b0d933b&amp;type=3#SelectionUI" />
+    <ui:VisualElement class="container" style="background-color: rgba(0, 0, 0, 0.5);">
+        <ui:Label name="TitleLabel" text="隨機抽取：" class="title" style="-unity-text-outline-color: rgb(255, 0, 0); background-color: rgba(255, 255, 255, 0); color: rgb(255, 255, 255);" />
+        <ui:Label name="SelectedText" text="選擇材料: " class="subtitle" style="color: rgb(255, 255, 255);" />
+        <ui:VisualElement class="grid">
+            <ui:VisualElement class="column">
+                <ui:Button name="ButtonA" text="A" class="item" style="background-color: rgb(255, 255, 255);" />
+                <ui:Button name="ButtonB" text="B" class="item" style="background-color: rgb(255, 255, 255);" />
+                <ui:Button name="ButtonC" text="C" class="item" style="background-color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+            <ui:VisualElement class="column">
+                <ui:Button name="ButtonD" text="D" class="item" style="background-color: rgb(255, 255, 255);" />
+                <ui:Button name="ButtonE" text="E" class="item" style="background-color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label name="ChosenLabel" text="已選擇：" class="chosen" style="color: rgb(255, 255, 255); font-size: 30px;" />
+        <ui:VisualElement class="footer">
+            <ui:Button name="ClearButton" text="清空" />
+            <ui:Button name="SubmitButton" text="送出" />
+        </ui:VisualElement>
+        <ui:Button name="CloseButton" text="X" class="close-btn" />
+    </ui:VisualElement>
 </ui:UXML>

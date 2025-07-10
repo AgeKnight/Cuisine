@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/WIN.uss?fileID=7433441132597879392&amp;guid=aa0a3626fbe38914bb012093d1bfab8c&amp;type=3#WIN" />
+    <ui:VisualElement class="container">
+        <ui:Label name="WinLabel" text="失敗!" class="win-text" style="font-size: 102px;" />
+        <ui:Button name="ConfirmButton" text="確認" class="confirm-button" style="height: 99px; width: 280px; font-size: 80px;" />
+    </ui:VisualElement>
+</ui:UXML>

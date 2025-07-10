@@ -1,0 +1,82 @@
+:root {
+
+}
+.container {
+    width: 400px;
+    height: 600px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-width: 1px;
+    border-color: #000;
+    left: 780px;  /* ← 調整水平方向位置 */
+    top: 260px; 
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitle {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+    justify-content: center;
+}
+
+.item {
+    width: 60px;
+    height: 50px;
+    font-size: 18px;
+    border-width: 1px;
+    border-color: black;
+    text-align: center;
+}
+.column {
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+
+.item.selected {
+    background-color: #ffe5b4;
+}
+
+.chosen {
+    margin-top: 5px;
+    border-top-width: 1px;
+    padding-top: 5px;
+}
+
+.footer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+}
+.item.selected {
+    background-color:rgb(250, 179, 0);
+    width: 60px;
+    height: 50px;
+    font-size: 18px;
+    border-width: 1px;
+    border-color: black;
+    text-align: center;
+}
