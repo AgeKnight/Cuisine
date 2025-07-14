@@ -19,9 +19,11 @@ public class GameManager : MonoBehaviour
     VisualElement rootLose;
     VisualElement rootWin;
     VisualElement rootLittleGame;
+    VisualElement movingBlock;
     Label randomFood;
     Label chooseFood;
     Label ChosenLabel;
+    Label pointer;
     Button closeButton;
     Button clearButton;
     Button SubmitButton;
@@ -30,13 +32,22 @@ public class GameManager : MonoBehaviour
     Button stopButton;
     Dictionary<string, Button> materialButtons;
     List<string> selectedMaterials = new List<string>();
+    bool isRunning = true;
+    float currentX = 0f;
+    float direction = 1f;
+    float pointerX = 100f;
+    float barWidth = 300f;
+    float speed = 150f;
+    float blockWidth = 60f;
+    float pointerWidth = 20f;
+    public NPC npc;
+    string[] recipe = new string[5];
     Dictionary<string, List<string>> recipeBook = new Dictionary<string, List<string>>
     {
         { "黑料理", new List<string> { "A", "C" } },
         { "紅料理", new List<string> { "B", "C" } },
         { "白料理", new List<string> { "A", "D", "E" } }
     };
-    string nowRecipe;
     string[] materialOrder = { "A", "B", "C", "D", "E" };
     public void ChooseFood()
     {
@@ -74,6 +85,8 @@ public class GameManager : MonoBehaviour
                 }
 
                 selectedMaterials.Add(material);
+                System.Text.ASCIIEncoding asciiEncoding = new System.Text.ASCIIEncoding();
+                recipe[(int)asciiEncoding.GetBytes(material)[0] - 65] = material;
                 button.AddToClassList("selected");
 
                 SortSelectedMaterials();
@@ -82,16 +95,21 @@ public class GameManager : MonoBehaviour
         }
         SubmitButton.clicked += () =>
         {
-            if (recipeBook[currentRecipeName].Count == selectedMaterials.Count && !recipeBook[currentRecipeName].Except(selectedMaterials).Any())
-            {
-                LittleGame();
-            }
-            else
-            {
-                Lose();
-            }
+            npc.MoveToUI(recipe);
+
         };
         RandomFood();
+    }
+    public void Comfirm()
+    {
+        if (recipeBook[currentRecipeName].Count == selectedMaterials.Count && !recipeBook[currentRecipeName].Except(selectedMaterials).Any())
+        {
+            LittleGame();
+        }
+        else
+        {
+            Lose();
+        }
     }
     void closeFood(ClickEvent c)
     {
@@ -130,12 +148,59 @@ public class GameManager : MonoBehaviour
         littleGame.SetActive(true);
         littleGameDocument = littleGame.GetComponent<UIDocument>();
         rootLittleGame = littleGameDocument.rootVisualElement;
-        stopButton = rootWin.Q<Button>("stopButton");
-        stopButton.clicked += () =>
+        movingBlock = rootLittleGame.Q<VisualElement>("movingBlock");
+        pointer = rootLittleGame.Q<Label>("pointer");
+        stopButton = rootLittleGame.Q<Button>("stopButton");
+        // 決定指標位置
+
+        currentX = 0f;
+        isRunning = true;
+
+        float pointerHalf = pointerWidth / 2f;
+        pointerX = Random.Range(0, barWidth - pointerHalf);
+        pointer.style.left = pointerX - pointerHalf;
+        movingBlock.style.left = currentX;
+
+        stopButton.RegisterCallback<ClickEvent>(OnStopClicked);
+    }
+    void Update()
+    {
+        MoveBlock();
+    }
+    void MoveBlock()
+    {
+        if (!isRunning || movingBlock == null) return;
+
+        currentX += direction * speed * Time.deltaTime;
+
+        // 來回邊界判斷
+        if (currentX <= 0)
         {
+            currentX = 0;
+            direction *= -1;
+        }
+        else if (currentX >= (barWidth - blockWidth))
+        {
+            currentX = barWidth - blockWidth;
+            direction *= -1;
+        }
+
+        // 更新移動方塊位置
+        movingBlock.style.left = currentX;
+    }
+    void OnStopClicked(ClickEvent c)
+    {
+        isRunning = false;
+        float blockLeft = currentX;
+        float blockRight = currentX + blockWidth;
+
+        float pointerCenter = pointerX + 10f; // 三角形中心點
+
+        if (pointerCenter >= blockLeft && pointerCenter <= blockRight)
             Win();
-            littleGame.SetActive(false);
-        };
+        else
+            Lose();
+        littleGame.SetActive(false);
     }
     void Lose()
     {
@@ -172,6 +237,6 @@ public class GameManager : MonoBehaviour
         var keys = recipeBook.Keys.ToArray();
         int randomIndex = Random.Range(0, recipeBook.Count);
         currentRecipeName = keys[randomIndex];
-        randomFood.text =  $"隨機抽取：{currentRecipeName}";
+        randomFood.text = $"隨機抽取：{currentRecipeName}";
     }
 }

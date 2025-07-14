@@ -48,15 +48,19 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.1.10f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\NPC.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UI Toolkit\WIN.uxml" />
     <None Include="Assets\UI Toolkit\FOOD.uxml" />
+    <None Include="Assets\UI Toolkit\food.uss" />
     <None Include="Assets\UI Toolkit\Choose.uxml" />
     <None Include="Assets\UI Toolkit\SelectionUI.uss" />
+    <None Include="Assets\UI Toolkit\TimingBar.uss" />
     <None Include="Assets\UI Toolkit\WIN.uss" />
     <None Include="Assets\UI Toolkit\LOSE.uxml" />
+    <None Include="Assets\UI Toolkit\LittleGame.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

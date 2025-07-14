@@ -1,0 +1,18 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/TimingBar.uss?fileID=7433441132597879392&amp;guid=4a891703f63e1ba49a943647907b275f&amp;type=3#TimingBar" />
+    <ui:VisualElement name="GamePanel" class="panel">
+
+  <ui:Label name="instruction" text="左右移動，按下停止" class="instruction" />
+
+  <ui:VisualElement name="barArea" class="bar-area">
+    <ui:Label name="pointer" text="▼" class="pointer-label" />
+    <ui:VisualElement name="bar" class="bar">
+      <ui:VisualElement name="movingBlock" class="moving-block" />
+    </ui:VisualElement>
+  </ui:VisualElement>
+
+  <ui:Button name="stopButton" text="STOP" class="stop-button" />
+  <ui:Label name="resultLabel" text="" class="result-label" />
+
+</ui:VisualElement>
+</ui:UXML>
