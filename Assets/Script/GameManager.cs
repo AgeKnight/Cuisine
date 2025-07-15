@@ -14,15 +14,18 @@ public class GameManager : MonoBehaviour
     public GameObject lose;
     public GameObject littleGame;
     public int ChooseFoodIndex;
+    public Texture2D[] dishTexture;
     string currentRecipeName;
     VisualElement rootFood;
     VisualElement rootLose;
     VisualElement rootWin;
     VisualElement rootLittleGame;
     VisualElement movingBlock;
+    VisualElement dishImage;
     Label randomFood;
     Label chooseFood;
     Label ChosenLabel;
+    Label result;
     Label pointer;
     Button closeButton;
     Button clearButton;
@@ -95,8 +98,7 @@ public class GameManager : MonoBehaviour
         }
         SubmitButton.clicked += () =>
         {
-            npc.MoveToUI(recipe);
-
+            StartCoroutine(npc.Move(recipe));
         };
         RandomFood();
     }
@@ -123,18 +125,25 @@ public class GameManager : MonoBehaviour
     void RealClear()
     {
         selectedMaterials.Clear();
-        // 移除每個按鈕的 "selected" 樣式
         foreach (var btn in materialButtons.Values)
         {
             btn.RemoveFromClassList("selected");
         }
         UpdateChosenLabel();
+        for (int i = 0; i < recipe.Length; i++)
+        {
+            recipe[i] = null;
+        }
     }
     void Win()
     {
         win.SetActive(true);
         winDocument = win.GetComponent<UIDocument>();
         rootWin = winDocument.rootVisualElement;
+        result = rootWin.Q<Label>("result");
+        dishImage = rootWin.Q<VisualElement>("dishImage");
+        result.text = $"你成功製作：{currentRecipeName}"+"!";
+        dishImage.style.backgroundImage = new StyleBackground(dishTexture[randomIndex]);
         winButton = rootWin.Q<Button>("ConfirmButton");
         winButton.clicked += () =>
         {
@@ -232,10 +241,11 @@ public class GameManager : MonoBehaviour
             chooseFood.text = "已選擇：" + string.Join("・", selectedMaterials);
         }
     }
+    int randomIndex = 0;
     void RandomFood()
     {
         var keys = recipeBook.Keys.ToArray();
-        int randomIndex = Random.Range(0, recipeBook.Count);
+        randomIndex = Random.Range(0, recipeBook.Count);
         currentRecipeName = keys[randomIndex];
         randomFood.text = $"隨機抽取：{currentRecipeName}";
     }

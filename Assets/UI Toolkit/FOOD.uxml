@@ -1,25 +1,25 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/food.uss?fileID=7433441132597879392&amp;guid=c73a4541b15d5e648816f0fe88f79a5e&amp;type=3#food" />
     <ui:VisualElement class="main-container">
-        <ui:VisualElement name="BG" class="background">
+        <ui:VisualElement name="BG" class="background" style="border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;">
             <ui:VisualElement name="Food" class="materials-container">
-                <ui:VisualElement name="FOODBOX" class="food-box">
-                    <ui:Label text="材料A" name="TEXT" class="material-text" />
-                    <ui:VisualElement name="A" class="material-image" style="background-image: url(&quot;project://database/Assets/Test%20source/A.png?fileID=-8680797543115379092&amp;guid=b29e2d327f0002c44bfc370cfd0a86a2&amp;type=3#A_0&quot;);" />
+                <ui:VisualElement name="FOODBOX" class="food-box" style="border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgba(255, 255, 255, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
+                    <ui:Label text="材料A" name="TEXT" class="material-text" style="border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0);" />
+                    <ui:VisualElement name="A" class="material-image" style="background-image: url(&quot;project://database/Assets/Test%20source/A.png?fileID=-8680797543115379092&amp;guid=b29e2d327f0002c44bfc370cfd0a86a2&amp;type=3#A_0&quot;); width: 90px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="FOODBOX" class="food-box">
+                <ui:VisualElement name="FOODBOX" class="food-box" style="background-color: rgba(255, 255, 255, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
                     <ui:Label text="材料B" name="TEXT" class="material-text" />
                     <ui:VisualElement name="B" class="material-image" style="background-image: url(&quot;project://database/Assets/Test%20source/B.png?fileID=7425438597007568885&amp;guid=a661b787c69deec478c1c0942f3f6208&amp;type=3#B_0&quot;);" />
                 </ui:VisualElement>
-                <ui:VisualElement name="FOODBOX" class="food-box">
+                <ui:VisualElement name="FOODBOX" class="food-box" style="background-color: rgba(255, 255, 255, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                     <ui:Label text="材料C" name="TEXT" class="material-text" />
                     <ui:VisualElement name="C" class="material-image" style="background-image: url(&quot;project://database/Assets/Test%20source/C.png?fileID=-606033477821260893&amp;guid=aa809cd8ec5ae4648a1a331752e94022&amp;type=3#C_0&quot;);" />
                 </ui:VisualElement>
-                <ui:VisualElement name="FOODBOX" class="food-box">
+                <ui:VisualElement name="FOODBOX" class="food-box" style="background-color: rgba(255, 255, 255, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
                     <ui:Label text="材料D" name="TEXT" class="material-text" />
                     <ui:VisualElement name="D" class="material-image" style="background-image: url(&quot;project://database/Assets/Test%20source/D.png?fileID=-962488092458481032&amp;guid=fe594bc669147b04891bbcbc50c232d5&amp;type=3#D_0&quot;);" />
                 </ui:VisualElement>
-                <ui:VisualElement name="FOODBOX" class="food-box">
+                <ui:VisualElement name="FOODBOX" class="food-box" style="background-color: rgba(255, 255, 255, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;">
                     <ui:Label text="材料E" name="TEXT" class="material-text" />
                     <ui:VisualElement name="E" class="material-image" style="background-image: url(&quot;project://database/Assets/Test%20source/E.png?fileID=-2224474878120320963&amp;guid=c2964de0c27a2bc41828e2ff96659da0&amp;type=3#E_0&quot;);" />
                 </ui:VisualElement>

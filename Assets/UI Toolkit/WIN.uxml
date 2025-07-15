@@ -1,7 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/WIN.uss?fileID=7433441132597879392&amp;guid=aa0a3626fbe38914bb012093d1bfab8c&amp;type=3#WIN" />
     <ui:VisualElement class="container">
-        <ui:Label name="WinLabel" text="獲勝！" class="win-text" style="font-size: 102px;" />
+        <ui:Label name="WinLabel" text="獲勝！" class="win-text" style="font-size: 40px;" />
+        <ui:VisualElement class="result-row">
+            <ui:Label text="你成功製作黑料理!" name="result" class="result-text" style="font-size: 30px;" />
+            <ui:VisualElement name="dishImage" class="dish-image" style="background-image: url(&quot;project://database/Assets/Test%20source/Black.png?fileID=2800000&amp;guid=beb8be38784cb2b46ad8fbd04a7e3335&amp;type=3#Black&quot;); width: 109px; height: 93px;" />
+        </ui:VisualElement>
         <ui:Button name="ConfirmButton" text="確認" class="confirm-button" style="height: 99px; width: 280px; font-size: 80px;" />
     </ui:VisualElement>
 </ui:UXML>

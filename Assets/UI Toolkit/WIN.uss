@@ -15,13 +15,6 @@
     top: 400px; 
 }
 
-.win-text {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
 .confirm-button {
     width: 100px;
     height: 40px;
@@ -29,4 +22,15 @@
     border-width: 1px;
     border-color: black;
     background-color: #fff;
+}
+.result-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.dish-image {
+  width: 64px;
+  height: 64px;
+  background-size: cover;
 }

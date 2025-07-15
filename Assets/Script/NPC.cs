@@ -2,18 +2,19 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Internal;
 using System.Collections;
+using System;
 
 public class NPC : MonoBehaviour
 {
     public Camera camera1;
-    UIDocument foodDocument;
     public GameManager gameManager;
+    UIDocument foodDocument;
     VisualElement root;
     VisualElement[] material = new VisualElement[5];
     Button table;
-    Vector3[] foodVector = new Vector3[6];
+    public GameObject[] foodVector;
     public float moveSpeed = 2f;
-    bool isArrive = false;
+    public bool canMove = false;
     void Start()
     {
         foodDocument = gameObject.GetComponent<UIDocument>();
@@ -29,10 +30,30 @@ public class NPC : MonoBehaviour
             gameManager.ChooseFood();
         };
     }
-
-    public void MoveToUI(string[] input)
+    public IEnumerator Move(string[] input)
     {
-        StopAllCoroutines();
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] != null)
+            {
+                yield return StartCoroutine(MoveToUI(foodVector[i].transform.position));
+                material[i].style.opacity = 0;
+            }
+        }
+        yield return StartCoroutine(MoveToUI(foodVector[5].transform.position));
+        for (int i = 0; i < 5; i++)
+        {
+            material[i].style.opacity = 1;
+        }
+        gameManager.Comfirm();
+    }
+    IEnumerator MoveToUI(Vector3 targetPos)
+    {
+        while (transform.position != targetPos)
+        {
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPos, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 
 }
